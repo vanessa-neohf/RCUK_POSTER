@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>RCUK.knit</title>
+
+
+
+
+
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=Special Elite' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+
+<!--
+Here are the required style attributes for css to make this poster work :)
+-->
+<style>
+@page {
+size: 23.4in 33.1in;
+margin: 0;
+padding: 0;
+}
+body {
+margin: 0px;
+padding: 0px;
+width: 23.4in;
+height: 33.1in;
+text-align: justify;
+font-size: 45px;
+line-height: 1.05;
+}
+/* RMarkdown Class Styles */
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r {
+background-color: #dddddd40;
+border-radius: 4mm;
+padding: 4mm;
+width: 75%;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+code.sourceCode.r{
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #0080FF24;
+color: #009999;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+caption {
+margin-bottom: 10px;
+font-size: 20pt;
+font-style: italic;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #0080FF20;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  border-spacing: 0;
+  font-size: 40%;
+  border-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
+  line-height: 1em;
+}
+table {
+  margin: auto;
+}
+th {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+.caption {
+font-size: 20pt;
+font-style: italic;
+padding-top: 0;
+}
+.references {
+font-size: 20px;
+line-height: 90%;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 0px;
+}
+.outer {
+width: 23.4in;
+height: calc(33.1in *  (1 - 0.15 - 8.0e-2 - 0.01) );
+-webkit-column-count: 3; /* Chrome, Safari, Opera */
+-moz-column-count: 3; /* Firefox */
+column-count: 3;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+column-gap: 0;
+padding-left: 0cm;
+padding-right: 0cm;
+/* -webkit-column-rule-width: 50%;
+-moz-column-rule-width: 50%;
+column-rule-width: 50%; */
+-webkit-column-rule-style: none;
+-moz-column-rule-style: none;
+column-rule-style: none;
+-webkit-column-rule-color: black;
+-moz-column-rule-color: black;
+column-rule-color: black;
+background-color: #ffffff;
+font-family: Rasa;
+margin-top: calc(33.1in *  0.15 );
+padding-top: 1em;
+padding-bottom: 1em;
+}
+span.citation {
+  color: #0080FF;
+  font-weight: bold;
+}
+a {
+text-decoration: none;
+color: #0080FF;
+}
+#title {
+font-size: 60pt;
+text-align: left;
+margin: 0;
+line-height: 98%;
+border-bottom: 0;
+font-weight: normal;
+background: 0;
+}
+#author {
+color: #009999;
+margin: 0;
+line-height: 85%;
+font-size: 1.17em;
+}
+#affiliation {
+padding-top: 0.1em;
+color: ;
+font-style: italic;
+font-size: 25px;
+margin: 0;
+}
+sup {
+color: #009999;
+}
+.affiliation sup {
+font-size: 20px;
+}
+.author {
+text-align: left;
+}
+.author sup {
+font-size: 30px;
+}
+.author_extra {
+color: #0080FF;
+margin: 0;
+line-height: 85%;
+font-size: 35px;
+text-align: left;
+}
+.outer h1, h2, h3, h4, h5, h6 {
+text-align: center;
+margin: 0;
+font-weight: bold;
+}
+.section h1 {
+  text-align:center;
+  padding-bottom:5px;
+  background:
+    linear-gradient(
+      to left,
+      #ffffff 1%,
+      #ffffff 20%,
+      #00999975 33%,
+      #009999 50%,
+      #00999975 66%,
+      #ffffff 80%,
+      #ffffff 99%
+    )
+    left
+    bottom
+    #ffffff
+    no-repeat;
+  background-size:100% 5px ;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.outer h2 {
+text-align: center;
+}
+.outer p, .level2 {
+color: #000000;
+}
+.outer ol {
+padding-left: 8%;
+padding-right: 8%;
+text-align: left;
+}
+.main {
+width: 23.4in;
+height: calc(33.1in * 0.15);
+position: absolute;
+background-color: #009999;
+color: #FDFEFE90;
+font-family: Special Elite;
+background-image: linear-gradient(#009999 50%,#0080FF);
+}
+.main strong {
+color: #FDFEFE;
+}
+.main strong > sup {
+color: #FDFEFE;
+}
+.main sup {
+color: #FDFEFE90;
+}
+#main-img-left {
+width: 10%;
+left: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+#main-img-center {
+width: 10%;
+left: calc(23.4in * 0.45);
+bottom: 0.5in;
+position: absolute;
+}
+#main-img-right {
+width: 10%;
+right: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+.main p {
+font-size: 150px;
+font-family: Special Elite;
+text-align: center;
+margin: 0;
+position: absolute;
+top: 50%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+margin-left: 1em;
+}
+.fab {
+color: #00000030;
+font-size: 25px;
+}
+.twitter, i {
+color: #00000030;
+font-size: 35px;
+text-decoration: none;
+}
+a.email {
+text-decoration: none;
+color: #00000030;
+font-size: 35px;
+}
+.envelope {
+color: #00000030;
+font-size: 5px;
+text-decoration: none;
+}
+.poster_wrap {
+width: 23.4in;
+height: 33.1in;
+padding: 0cm;
+}
+.main_bottom {
+width: 23.4in;
+height: calc(33.1in * 8.0e-2);
+margin-top: calc(33.1in * (1 - 8.0e-2));
+position: absolute;
+background-color: #009999;
+background-image: linear-gradient(#0080FF 10%, #009999);
+}
+.section {
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+span > #tab:mytable {
+  font-weight: bold;
+}
+.orcid img {
+  width: 3%;
+}
+.emphasis {
+  background-color: #008080;
+  color: #ffffff;
+  border: solid #0b2045 3mm;
+  margin: 1em;
+  padding-left: 0;
+  padding-right: 0;
+}
+.emphasis h1 {
+  font-weight: bold;
+  background: none;
+  background-color: #0b2045;
+  padding-bottom: 5mm;
+  padding-top: 1mm;
+  margin-top: -1mm;
+  margin-right: -1mm;
+  margin-left: -1mm;
+}
+.emphasis blockquote {
+  border: 0;
+}
+.emphasis ol {
+  padding: 0;
+  padding-left: 8%;
+  font-size: 100%;
+  font-weight: bold;
+}
+.emphasis p {
+  color: #ffffff;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+
+<div class="column outer">
+<div class="section">
+
+<h3 id="author" class="author">
+
+<strong>Vanessa Hui Fen Neo</strong><sup> 1, 2, <a class="orcid" href="https://orcid.org/0000-0001-7694-0355"><img src="https://raw.githubusercontent.com/brentthorne/posterdown/master/images/orcid.jpg"></a></sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:hfn3@leicester.ac.uk" class="email">hfn3@leicester.ac.uk</a> <br>
+ Joseph Maina Mbui<sup> 1</sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:joseph.mbui@mq.edu.au" class="email">joseph.mbui@mq.edu.au</a> <br>
+     </h3>
+
+<h5 id="author_extra", class="author_extra">
+  Jens Zinke<sup>2, 3, 4</sup>
+ Thomas Fung<sup>5</sup>
+ Chris Merchant<sup>6, 7</sup>
+ Kyle Zawada<sup>1</sup>
+ Hedwig Krawczyk<sup>2</sup>
+</h5>
+
+
+<p id="affiliation" class="affiliation">
+<sup>1</sup> School of Natural Sciences, Macquarie University, Sydney, NSW, Australia<br> <sup>2</sup> School of Geography, Geology and the Environment, University of Leicester, Leicester, UK<br> <sup>3</sup> Molecular and Life Sciences, Curtin University, Bentley, WA, Australia<br> <sup>4</sup> Australian Institute of Marine Science, Townsville, QLD, Australia<br> <sup>5</sup> School of Mathematical &amp; Physical Sciences, Macquarie University, Sydney, NSW, Australia,<br> <sup>6</sup> Department of Meteorology, University of Reading, Reading, UK,<br> <sup>7</sup> National Centre for Earth Observation, University of Reading, Reading, UK
+</p>
+</div>
+
+<style>
+  #main-img-right {
+    width: 30%;
+  }
+  
+  .caption { 
+  font-size: 20px;
+  }
+  
+  .body_text {
+  line-height: ;
+  }
+  
+
+</style>
+<div id="section" class="section level1">
+<h1></h1>
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p><img src="coral%20bleaching%20flow.png" width="100%" style="display: block; margin: auto;" />
+<font size = "6.5"></p>
+<ul>
+<li><p>Thermal stress is a major cause of this process towards coral mortality [1].</p></li>
+<li><p>Climate change and rising sea surface temperatures (SST) have resulted in mass global coral bleaching
+events.</p></li>
+<li><p>Monitoring changes in coral bleaching SST warning metrics known as Degree Heating Weeks (DHWs) or Degree Heating Months (DHMs), is crucial for predicting reef health for appropriate conservation actions.</p></li>
+<li><p>Different limitations exist for different SST data sources, but are often used without understanding the difference. Hence, there is a need to compare how they agree with each other.</p></li>
+</ul>
+<p></font></p>
+<font size = "6.5">
+<line height = 2>
+<center>
+<em>Does the SST source used to predict if coral reefs will
+bleach matters?</em>
+</center>
+<p></line>
+</font></p>
+<div id="objectives" class="section level3">
+<h3>Objectives</h3>
+</div>
+</div>
+<div id="section-1" class="section level1">
+<h1></h1>
+<p><font size = "6.5">
+<centre> Compare the consistency between coral bleaching thermal
+metrics derived from satellites, coral SST proxies and global climate
+models.</centre>
+</font></p>
+</div>
+<div id="section-2" class="section level1">
+<h1></h1>
+</div>
+<div id="section-3" class="section level1">
+<h1></h1>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods</h1>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Location"></span>
+<img src="study%20sites.png" alt="Western Australia Study Sites" width="100%" />
+<p class="caption">
+Figure 1: Western Australia Study Sites
+</p>
+</div>
+</div>
+<div id="section-4" class="section level1">
+<h1></h1>
+<p><font size = "6.5">
+Four data sources:<br />
+1) NOAA Coral Reef Watch 5km <em>daily</em> SST.<br />
+2) CCI 5km <em>daily</em> SST.<br />
+3) ACCESS Model <em>daily</em> SST for Australia (GCM).<br />
+4) Coral Core <em>monthly</em> SST Proxy Ratio.
+</font></p>
+</div>
+<div id="section-5" class="section level1">
+<h1></h1>
+<center>
+<strong>Then, calibrating Sr/Ca to SST values using long-term
+satellite data</strong>
+</center>
+<p></br></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:calibration"></span>
+<img src="SrCa%20Calibration%20with%20NOAA%2013TNT.jpg" alt="Calibration of Coral Core Thermal Proxy Sr/Ca with satellite data" width="100%" />
+<p class="caption">
+Figure 2: Calibration of Coral Core Thermal Proxy Sr/Ca with satellite data
+</p>
+</div>
+</div>
+<div id="section-6" class="section level1">
+<h1></h1>
+<center>
+<strong>and SST values to DHW and DHM values</strong>
+</center>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Conversion"></span>
+<img src="DHW%20and%20DHM%20method.png" alt="DHW and DHM Calculation Method [2], [3]" width="100%" />
+<p class="caption">
+Figure 3: DHW and DHM Calculation Method [2], [3]
+</p>
+</div>
+</div>
+<div id="section-7" class="section level1">
+<h1></h1>
+</div>
+<div id="section-8" class="section level1">
+<h1></h1>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:DHW"></span>
+<img src="DHW.png" alt="Degree Heating Weeks Time Series with known bleaching events in Cocos Keeling Island, Scott Reef and Browse Island. Red and Blue boxes represent known severe and moderate coral bleaching events respectively [4]" width="85%" />
+<p class="caption">
+Figure 4: Degree Heating Weeks Time Series with known bleaching events in Cocos Keeling Island, Scott Reef and Browse Island. Red and Blue boxes represent known severe and moderate coral bleaching events respectively [4]
+</p>
+</div>
+</div>
+<div id="section-9" class="section level1">
+<h1></h1>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:DHM"></span>
+<img src="DHM_13TNT.png" alt="Degree Heating Months Time Series with known bleaching events in Ningaloo Reef. [4]" width="85%" />
+<p class="caption">
+Figure 5: Degree Heating Months Time Series with known bleaching events in Ningaloo Reef. [4]
+</p>
+</div>
+</div>
+<div id="section-10" class="section level1">
+<h1></h1>
+</div>
+<div id="takeaways" class="section level1">
+<h1>Takeaways</h1>
+<font size = "6.5">
+<center>
+<p>SST data <strong>differs</strong> in coral bleaching metrics and event prediction</p>
+</center>
+<p></font></p>
+</div>
+<div id="section-11" class="section level1">
+<h1></h1>
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
+<p><font size = "4"> [1] Ainsworth, T. D., &amp; Brown, B. E. (2021). Coral
+bleaching. Curr Biol, 31(1), R5-R6. <br> [2] Liu, G., … &amp; Strong, A.
+E. (2018) Predicting Heat Stress to Inform Reef Management: NOAA Coral
+Reef Watch’s 4-Month Coral Bleaching Outlook. Front. Mar. Sci, 5(57).
+<br> [3] Barton, A. D., &amp; Casey, K. S. (2005). Climatological context
+for large-scale coral bleaching. Coral Reefs, 24, 536-554. <br> [4]
+Hughes, T. P., … &amp; Wilson, S. K. (2018). Spatial and temporal patterns
+of mass bleaching of corals in the Anthropocene. Science, 359(6371),
+80-83.</p>
+<p></font></p>
+</div>
+
+</div>
+<div class="main">
+<p>Do Thermal Data Sources agree when monitoring Coral Bleaching ?</p>
+</div>
+<div class="main_bottom">
+<img id="main-img-left" src=QR-black.png>
+<img id="main-img-center" src=>
+<img id="main-img-right" src=UoL-Logo-Full-Colour.png>
+</div>
+</div>
+
+
+
+</body>
+</html>

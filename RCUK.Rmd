@@ -1,0 +1,234 @@
+---
+main_topsize: 0.15 #percent coverage of the poster
+main_bottomsize: 0.08
+main_fontfamily: "Special Elite"
+main_textsize: 
+main_textcol: "#FDFEFE"
+primary_colour:	"#009999"	# Main colour used for poster design.
+secondary_colour:	"#0080FF"	# Secondary colour use for poster design.
+accent_colour:	"#009999"	# A third colour option for adding some "pop" to the poster colour palette.
+title:
+title_textsize: "60pt"
+author:
+  - name: '**Vanessa Hui Fen Neo**'
+    affil: 1, 2
+    main: true
+    orcid: '0000-0001-7694-0355'
+    email: hfn3@leicester.ac.uk
+  - name: Joseph Maina Mbui
+    affil: 1
+    main: true
+    email: 'joseph.mbui@mq.edu.au'
+  - name: Jens Zinke
+    affil: 2, 3, 4
+  - name: Thomas Fung
+    affil: 5
+  - name: Chris Merchant
+    affil: 6, 7
+  - name: Kyle Zawada
+    affil: 1
+  - name: Hedwig Krawczyk
+    affil: 2
+affiliation:
+  - num: 1
+    address: School of Natural Sciences, Macquarie University, Sydney, NSW, Australia
+  - num: 2
+    address: School of Geography, Geology and the Environment, University of Leicester, Leicester, UK
+  - num: 3
+    address: Molecular and Life Sciences, Curtin University, Bentley, WA, Australia
+  - num: 4
+    address: Australian Institute of Marine Science, Townsville, QLD, Australia
+  - num: 5
+    address: School of Mathematical & Physical Sciences, Macquarie University, Sydney, NSW, Australia,
+  - num: 6
+    address: Department of Meteorology, University of Reading, Reading, UK,  
+  - num: 7
+    address: National Centre for Earth Observation, University of Reading, Reading, UK
+main_findings:
+  - "Do Thermal Data Sources agree when monitoring Coral Bleaching ?"
+
+logoleft_name: QR-black.png
+logoright_name: UoL-Logo-Full-Colour.png
+logocenter_name: 
+poster_height: "33.1in"
+poster_width: "23.4in"
+output: 
+  posterdown::posterdown_betterport:
+    self_contained: false
+    pandoc_args: --mathjax
+    number_sections: false
+bibliography: packages.bib
+link-citations: true
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{=html}
+<style>
+  #main-img-right {
+    width: 30%;
+  }
+  
+  .caption { 
+  font-size: 20px;
+  }
+  
+  .body_text {
+  line-height: ;
+  }
+  
+
+</style>
+```
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      tidy = FALSE,
+                      message = FALSE,
+                      fig.align = 'center',
+                      out.width = "100%")
+options(knitr.table.format = "html") 
+
+```
+
+
+# 
+
+# Introduction
+
+
+```{r, echo = FALSE, out.width="100%"}
+
+knitr::include_graphics("coral bleaching flow.png", dpi = 300)
+
+```
+<font size = "6.5">
+
+- Thermal stress is a major cause of this process towards coral mortality [1].
+
+- Climate change and rising sea surface temperatures (SST) have resulted in mass global coral bleaching
+events.
+
+- Monitoring changes in coral bleaching SST warning metrics known as Degree Heating Weeks (DHWs) or Degree Heating Months (DHMs), is crucial for predicting reef health for appropriate conservation actions.
+
+- Different limitations exist for different SST data sources, but are often used without understanding the difference. Hence, there is a need to compare how they agree with each other.
+
+</font>
+
+<font size = "6.5">
+<line height = 2>
+<center>*Does the SST source used to predict if coral reefs will
+bleach matters?*</center>
+
+</line>
+</font>
+
+```{r, include=FALSE}
+knitr::write_bib(c('posterdown', 'rmarkdown','pagedown'), 'packages.bib')
+options(knitr.duplicate.label = "allow")
+```
+
+
+
+### Objectives
+#
+
+<font size = "6.5">
+<centre> Compare the consistency between coral bleaching thermal
+metrics derived from satellites, coral SST proxies and global climate
+models.</centre>
+</font>
+
+# 
+ 
+#
+# Methods
+
+
+```{r Location, echo = FALSE, out.width="100%", fig.cap="Western Australia Study Sites"}
+
+knitr::include_graphics("study sites.png", dpi = 300)
+
+
+```
+
+# 
+
+<font size = "6.5">
+Four data sources:\
+1) NOAA Coral Reef Watch 5km *daily* SST.\
+2) CCI 5km *daily* SST.\
+3) ACCESS Model *daily* SST for Australia (GCM).\
+4) Coral Core *monthly* SST Proxy Ratio. 
+</font>
+
+# 
+
+
+<center>**Then, calibrating Sr/Ca to SST values using long-term
+satellite data**</center>
+
+</br>
+
+```{r calibration, echo = FALSE, out.width="100%", fig.cap= "Calibration of Coral Core Thermal Proxy Sr/Ca with satellite data"}
+
+knitr::include_graphics("SrCa Calibration with NOAA 13TNT.jpg", dpi = 300)
+```
+
+# 
+
+
+<center>**and SST values to DHW and DHM values**</center>
+
+
+```{r Conversion, out.width="100%", fig.cap= "DHW and DHM Calculation Method [2], [3]", echo = FALSE}
+
+knitr::include_graphics("DHW and DHM method.png", dpi = 300)
+
+```
+
+
+#
+#
+# Results
+
+```{r, DHW, fig.cap='Degree Heating Weeks Time Series with known bleaching events in Cocos Keeling Island, Scott Reef and Browse Island. Red and Blue boxes represent known severe and moderate coral bleaching events respectively [4]', out.width="85%", echo = FALSE}
+knitr::include_graphics("DHW.png", dpi = 300)
+```
+
+# 
+
+
+```{r, DHM, fig.cap='Degree Heating Months Time Series with known bleaching events in Ningaloo Reef. [4]', out.width="85%", echo = FALSE}
+knitr::include_graphics("DHM_13TNT.png", dpi = 300)
+```
+
+# 
+
+# Takeaways
+
+<font size = "6.5">
+<center>
+
+SST data **differs** in coral bleaching metrics and event prediction
+
+</center>
+</font>
+
+
+# 
+
+# References
+
+<font size = "4"> [1] Ainsworth, T. D., & Brown, B. E. (2021). Coral
+bleaching. Curr Biol, 31(1), R5-R6. <br> [2] Liu, G., ... & Strong, A.
+E. (2018) Predicting Heat Stress to Inform Reef Management: NOAA Coral
+Reef Watch's 4-Month Coral Bleaching Outlook. Front. Mar. Sci, 5(57).
+<br> [3] Barton, A. D., & Casey, K. S. (2005). Climatological context
+for large-scale coral bleaching. Coral Reefs, 24, 536-554. <br> [4]
+Hughes, T. P., ... & Wilson, S. K. (2018). Spatial and temporal patterns
+of mass bleaching of corals in the Anthropocene. Science, 359(6371),
+80-83.
+
+</font>
