@@ -232,3 +232,10 @@ of mass bleaching of corals in the Anthropocene. Science, 359(6371),
 80-83.
 
 </font>
+
+```{r to_extract_to_pdf}
+# to extract Rmd to PDF, delete this chunk and run
+# pagedown::chromeprint("RCUK.Rmd")
+# replace RCUK with your own file name
+```
+
